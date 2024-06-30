@@ -1,0 +1,371 @@
+.espaciado {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8px;
+}
+hr {
+  display: flex;
+}
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+
+  background: #202930;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open {
+  width: 250px;
+}
+.sidebar .logo-details {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name {
+  opacity: 1;
+}
+.sidebar .logo-details #btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn {
+  text-align: right;
+}
+.sidebar i {
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list {
+  height: 100%;
+}
+.sidebar li {
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip {
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar.open li .tooltip {
+  display: none;
+}
+.sidebar input {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 400;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  width: 50px;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  background: #202930;
+}
+.sidebar.open input {
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+.sidebar .bx-search {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #1d1b31;
+  color: #fff;
+}
+.sidebar.open .bx-search:hover {
+  background: #1d1b31;
+  color: #fff;
+}
+.sidebar .bx-search:hover {
+  background: #fff;
+  color: #11101d;
+}
+.sidebar li a {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #202930;
+}
+.sidebar li a:hover {
+  background: #fff;
+}
+.sidebar li a .links_name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebar.open li a .links_name {
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i {
+  transition: all 0.5s ease;
+  color: #11101d;
+}
+.sidebar li i {
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.sidebar li.profile {
+  position: fixed;
+  width: 78px;
+  left: 0;
+  bottom: 0px;
+  padding: 10px 12px;
+  background: #202930;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  text:nowrap;
+}
+.sidebar.open li.profile {
+  width: 250px;/* Estilos generales del sidenav */
+  .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 250px; /* Ancho del sidenav */
+      background-color: #333; /* Color de fondo */
+      color: #fff;
+      z-index: 1000;
+      overflow-y: auto; /* Scroll vertical si es necesario */
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+      transition: width 0.3s ease; /* Transición para el ancho */
+  }
+  
+  .sidebar.collapsed {
+      width: 70px; /* Ancho reducido cuando está colapsado */
+  }
+  
+  /* Detalles del logo y botón de menú */
+  .logo-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #444;
+  }
+  
+  .logo_name {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.2em;
+  }
+  
+  .logo_name img {
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+  
+  .bx-menu {
+      font-size: 2em;
+      cursor: pointer;
+  }
+  
+  /* Lista de navegación */
+  .nav-list {
+      padding: 0;
+      margin: 20px 0;
+      list-style: none;
+  }
+  
+  .nav-list li {
+      margin-bottom: 10px;
+  }
+  
+  .nav-list a {
+      display: block;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s;
+  }
+  
+  .nav-list a:hover {
+      background-color: #555;
+  }
+  
+  .nav-list .bx {
+      margin-right: 10px;
+      font-size: 1.5em;
+  }
+  
+  /* Perfil */
+  .profile {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      width: 100%;
+  }
+  
+  .profile-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      cursor: pointer;
+  }
+  
+  .profile-details img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+  }
+  
+  .profile-details .name {
+      font-weight: bold;
+  }
+  
+  .tooltip {
+      position: absolute;
+      top: -20px;
+      left: calc(100% + 10px);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 5px;
+      border-radius: 3px;
+      font-size: 0.8em;
+      opacity: 0;
+      transition: opacity 0.3s;
+  }
+  
+  /* Mostrar tooltip al pasar el ratón */
+  .nav-list li:hover .tooltip {
+      opacity: 1;
+  }
+  
+}
+.sidebar li .profile-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.sidebar li img {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .job {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 5px;
+  color: #fff;
+  white-space: nowrap;
+}
+.sidebar li.profile .job {
+  font-size: 12px;
+}
+.sidebar .profile #log_out {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #1d1b31;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out {
+  width: 50px;
+  background: none;
+}
+.home-section {
+  position: relative;
+  top: 0;
+  left: 80px;
+
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+}
+.sidebar.open ~ .home-section {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+.home-section .text {
+  display: inline-block;
+  color: #11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px;
+}
+
+.home-section .elegant {
+  border: 1px solid gainsboro;
+  border-radius: 25px;
+}
+@media (max-width: 420px) {
+  .sidebar li .tooltip {
+    display: none;
+  }
+}

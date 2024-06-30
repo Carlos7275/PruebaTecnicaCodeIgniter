@@ -51,3 +51,9 @@ input.error {
   border-color: red;
 }
 
+
+.gris {
+  margin: 50px;
+  border-radius: 25px;
+  background-color: rgba(240, 238, 238, 0.617);
+}

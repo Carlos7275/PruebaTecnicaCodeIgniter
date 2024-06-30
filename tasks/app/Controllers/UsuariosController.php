@@ -57,6 +57,6 @@ class UsuariosController extends BaseController
             $session->destroy();
         }
         // Redireccionar al login
-        return redirect()->to(site_url('login'));
+        return redirect()->to("/login");
     }
 }

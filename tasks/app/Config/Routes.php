@@ -6,12 +6,12 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->group("", ["filter" => "login"], function ($routes) {
-    $routes->get("/", 'Home::index');
+    $routes->get("/", 'Home::inicio');
 });
 
 
 $routes->get('/login', 'Home::login', ['filter' => 'public']);
-$routes->get('/registro', 'Home::register', ['filter' => 'public']);
+$routes->get('/registro', 'Home::registro', ['filter' => 'public']);
 
 $routes->group('api',  function ($routes) {
 

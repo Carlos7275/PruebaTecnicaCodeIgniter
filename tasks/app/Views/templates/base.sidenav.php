@@ -11,8 +11,12 @@
 
 <body>
     <?php $this->renderSection("content"); ?>
-    <?php include(APPPATH . 'views/components/footer/footer.php');
-    ?>
+    <?php include(APPPATH . 'views/components/sidenav/sidenav.php') ?>;
+    <section class="home-section">
+        <?php include(APPPATH . 'views/components/footer/footer.php');
+        ?></section>
+
+
 </body>
 
 

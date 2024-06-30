@@ -1,0 +1,78 @@
+
+  
+  .split-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 8px;
+  }
+  
+  button {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: #f9f9f9;
+    padding: 15px;
+    font-family: "Poppins";
+    font-size: 11px;
+  }
+  
+  .split-button > button:nth-child(1) {
+    padding: 0 22px;
+  }
+  
+  .split-button > button:nth-child(2) {
+    width: 120px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .sidenav .menu{
+     position: fixed; /* or position: fixed; depending on your layout needs */
+    left: 239px;
+    z-index: 4;
+    transform: translate(0, -30px);
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 8px;
+    background: #202930;
+    transition: 0.3s;
+  }
+  .menu {
+    position: fixed; /* or position: fixed; depending on your layout needs */
+    left: 239px;
+    z-index: 4;
+    transform: translate(0, -30px);
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 8px;
+    background: #202930;
+    transition: 0.3s;
+}
+  
+  .menu.open {
+    translate: 0 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .menu > button {
+    gap: 10px;
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 56px;
+    padding: 0 1px;
+    
+  }
+  
+  .menu > button:hover {
+    background: rgba(0, 0, 0, 0.26);
+  }
+  
+  .chevron {
+    margin: auto;
+  }
