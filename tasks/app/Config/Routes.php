@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group("", ["filter" => "login"], function ($routes) {
     $routes->get("/", 'Home::inicio');
+    $routes->get('usuario/configuracion', 'UsuariosController::configuracionUsuario');
 });
 
 
@@ -18,6 +19,9 @@ $routes->group('api',  function ($routes) {
     //Rutas que necesitan sesiones
     $routes->group('', ["filter" => "login"], function ($routes) {
         $routes->get('cerrarsesion', 'UsuariosController::cerrarSesion');
+        $routes->put("editarusuario/(:num)", 'UsuariosController::editarUsuario/$1');
     });
     $routes->post('iniciarsesion', 'UsuariosController::iniciarSesion');
+    $routes->get('generos', 'GenerosController::obtenerGeneros');
+    $routes->get('genero/(:num)', 'GenerosController::obtenerGenero/$1');
 });

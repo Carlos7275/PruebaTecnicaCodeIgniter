@@ -2,6 +2,7 @@
 
 namespace App\Filters;
 
+use App\Models\UsuariosModel;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -26,12 +27,15 @@ class LoginFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // Cargar el servicio de sesión
-        $session = session();
-
+        $usuario = session("usuario");
+        $session=session();
         // Verifica si el usuario está autenticado
-        if (! $session->has('usuario')) {
+        if (!$usuario) {
             // Redirige al usuario a la página de inicio de sesión si no está autenticado
             return redirect()->to(base_url('/login'));
+        } else {
+            $usuariosModel = new UsuariosModel();
+            $session->set("usuario", $usuariosModel->buscarPorID($usuario["id"]));
         }
     }
 

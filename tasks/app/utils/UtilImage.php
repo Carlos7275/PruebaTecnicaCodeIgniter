@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Utils;
 
 class UtilImage
 {
@@ -33,7 +33,7 @@ class UtilImage
         $output_file_with_extension = uniqid() . '.' . $extension;
         list(, $imageData)      = explode(',', $base64_image_string);
         self::crearCarpetaImagenes($folder);
-        file_put_contents(self::ruta . $output_file_with_extension, base64_decode($imageData));
+        file_put_contents(self::ruta . "/" . $folder . "/" . $output_file_with_extension, base64_decode($imageData));
 
         return "/assets/imagenes/" . $folder . "/" . $output_file_with_extension;
     }

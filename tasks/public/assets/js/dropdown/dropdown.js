@@ -18,9 +18,9 @@ function handleMenuButtonClicked() {
 }
 
 function logout() {
-  window.location.replace("api/cerrarsesion");
+  window.location.replace("/api/cerrarsesion");
 }
 
 function configuracion() {
-  window.location.replace("usuario/configuracion");
+  window.location.replace("/usuario/configuracion");
 }

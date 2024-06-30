@@ -5,8 +5,8 @@ $usuario =  session("usuario");
 <link rel="stylesheet" href="<?= base_url("assets/css/dropdown.css") ?>">
 <div class="split-button" data-aos="fade-left">
 
-    <img loading="true" src="<?= base_url() . $usuario["foto"] ?>" class="img-thumbnail " width="65px" height="65px">
-    <button disabled><?= $usuario["nombres"] . " " . $usuario["apellidos"] ?></button>
+<img loading="true" src="<?= base_url() . $usuario["foto"] ?>" class="img-fluid rounded" width="100px" height="100px">
+<button disabled><?= $usuario["nombres"] . " " . $usuario["apellidos"] ?></button>
 
     <button onclick="toggleDropdown()">
         <span id="chevron" class="material-icons prefix">

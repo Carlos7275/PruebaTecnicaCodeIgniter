@@ -14,7 +14,7 @@ $usuario =  session("usuario");
     <ul class="nav-list">
 
         <li>
-            <a href="#">
+            <a href="/">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Inicio</span>
             </a>
@@ -22,7 +22,7 @@ $usuario =  session("usuario");
         </li>
 
         <li>
-            <a href="#">
+            <a href="usuarios">
                 <i class='bx bx-user'></i>
                 <span class="links_name">Usuarios</span>
             </a>
@@ -30,7 +30,7 @@ $usuario =  session("usuario");
         </li>
 
         <li>
-            <a href="#">
+            <a href="tareas">
                 <i class='bx bx-task'></i>
                 <span class="links_name">Tareas</span>
             </a>
