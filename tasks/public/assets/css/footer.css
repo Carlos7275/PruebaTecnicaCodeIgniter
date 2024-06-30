@@ -1,0 +1,96 @@
+.footer {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #273036, #1e272e);
+  padding: 3% 5%;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.logo a {
+  font-size: 3vw; /* Relative to viewport width */
+  color: #fff;
+  font-weight: 600;
+  margin: 2% 0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logo a:hover {
+  color: #00aaff;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: start;
+  margin-bottom: 2%;
+}
+
+.row .col {
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.row .col ul {
+  padding: 0;
+}
+
+.social {
+  display: flex;
+  gap: 2%;
+  justify-content: center;
+}
+
+.social li {
+  height: 5vw;
+  width: 5vw;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  transition: background-color 0.6s, transform 0.6s;
+}
+
+.social li i {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.social li:hover {
+  background-color: #00aaff;
+  transform: translateY(-10%);
+}
+
+.social li:hover i {
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .row .col {
+    width: 30%;
+  }
+}
+
+.footer p {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.footer hr {
+  border: 0;
+  height: 1px;
+  background: #444;
+  margin: 20px 0;
+}
