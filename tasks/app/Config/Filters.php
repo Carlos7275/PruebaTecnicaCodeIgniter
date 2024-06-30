@@ -4,6 +4,7 @@ namespace Config;
 
 use App\Filters\LoginFilter;
 use App\Filters\NotLoginFilter;
+use App\Filters\RolFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -37,7 +38,8 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         "login" => LoginFilter::class,
-        "public" => NotLoginFilter::class
+        "public" => NotLoginFilter::class,
+        "rolefilter" => RolFilter::class,
     ];
 
     /**
@@ -107,5 +109,7 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        
+    ];
 }

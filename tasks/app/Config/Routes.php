@@ -7,12 +7,15 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group("", ["filter" => "login"], function ($routes) {
     $routes->get("/", 'Home::inicio');
+    $routes->group("", ['filter' => 'rolefilter:1'], function ($routes) {
+        $routes->get("usuarios", "UsuariosController::usuarios");
+    });
     $routes->get('usuario/configuracion', 'UsuariosController::configuracionUsuario');
 });
 
 
-$routes->get('/login', 'Home::login', ['filter' => 'public']);
-$routes->get('/registro', 'Home::registro', ['filter' => 'public']);
+$routes->get('/login', 'UsuariosController::login', ['filter' => 'public']);
+$routes->get('/registro', 'UsuariosController::registro', ['filter' => 'public']);
 
 $routes->group('api',  function ($routes) {
 
@@ -24,4 +27,5 @@ $routes->group('api',  function ($routes) {
     $routes->post('iniciarsesion', 'UsuariosController::iniciarSesion');
     $routes->get('generos', 'GenerosController::obtenerGeneros');
     $routes->get('genero/(:num)', 'GenerosController::obtenerGenero/$1');
+    $routes->post("crearUsuario", 'UsuariosController::registrarUsuario');
 });

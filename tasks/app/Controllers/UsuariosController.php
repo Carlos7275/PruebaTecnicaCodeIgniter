@@ -19,6 +19,12 @@ class UsuariosController extends BaseController
         $this->_generosModel = new GenerosModel();
     }
 
+    /**Redirige ala vista login */
+    public function login()
+    {
+        return view('login/login');
+    }
+
     /**
      * Iniciar Sesion en el sistema 
      */
@@ -73,6 +79,55 @@ class UsuariosController extends BaseController
         return view("configuracion-usuario/configuracion-usuario", $data);
     }
 
+    /**
+     * Registrar a un usuario si el usuario es administrador puede enviar id_rol
+     */
+    public function registrarUsuario()
+    {
+        $rules = [
+            'nombres' => 'required',
+            'email' => 'required|valid_email|is_unique[usuarios.email]',
+            'password' => 'required|min_length[4]|max_length[12]',
+            'apellidos' => 'required|string',
+            "id_genero" => "required|numeric",
+            'fechanacimiento' => 'required|Date|trim|valid_date',
+        ];
+
+        $usuario = session("usuario");
+        if (isset($usuario) && $usuario["id_rol"] == 1) {
+            if (isset($usuario["id_rol"])) {
+                $rules['id_rol'] = 'required';
+            }
+        }
+
+        $input = $this->getRequestInput($this->request);
+
+
+        if (!$this->validateRequest($input, $rules)) {
+            return $this->getResponse(
+                UtilMessage::Validation(
+                    Utils::ConvertirErroresALinea($this->validator->getErrors())
+                ),
+                UtilMessage::getStatus()
+            );
+        }
+        $input["password"] = password_hash($input["password"], PASSWORD_BCRYPT); //encriptamos la contraseña del usuario
+        $this->_usuariosModel->crear($input);
+
+        return $this->getResponse(UtilMessage::success("Se registro el usuario correctamente"));
+    }
+    /**
+     * Muestra la vista de registro
+     */
+    public function registro()
+    {
+        return view("/registro/registro");
+    }
+    /**
+     * Edita a un usuario
+     * @param $id  Id del usuario a editar
+     * @return array
+     */
     public function editarUsuario($id)
     {
 
@@ -104,6 +159,15 @@ class UsuariosController extends BaseController
                 unset($usuario["estatus"]);
         }
 
+
+        if (!$this->validateRequest($input, $rules)) {
+            return $this->getResponse(
+                UtilMessage::Validation(
+                    Utils::ConvertirErroresALinea($this->validator->getErrors())
+                ),
+                UtilMessage::getStatus()
+            );
+        }
         if (isset($input["foto"])) {
             $urlImagen = UtilImage::insertarImagen($input["foto"], "usuarios");
             $input["foto"] = $urlImagen;
@@ -111,6 +175,6 @@ class UsuariosController extends BaseController
 
 
         $this->_usuariosModel->actualizar($id, $input);
-      return  $this->getResponse(UtilMessage::success("Se edito la información del usuario"));
+        return  $this->getResponse(UtilMessage::success("Se edito la información del usuario"));
     }
 }

@@ -25,7 +25,7 @@ $("#frmLogin").validate({
 $("#passwordButton").on("click", () => {
   let password = $("#password");
   let hide = password.attr("type") == "password";
-  $("#password").attr("type", hide ? "text" : "password");
+  password.attr("type", hide ? "text" : "password");
   $("#passwordButton").text(hide ? "visibility_off" : "visibility");
 });
 

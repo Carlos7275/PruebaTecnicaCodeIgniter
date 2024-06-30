@@ -36,7 +36,7 @@ class UsuariosModel extends BaseModel
      */
     public function iniciarSesion($email, $password)
     {
-        $usuario = $this->where('email', $email)->first();
+        $usuario = $this->where('email', $email,)->where("estatus", 1)->first();
         if ($usuario) {
             if (password_verify($password, $usuario["password"])) {
                 unset($usuario["password"]);

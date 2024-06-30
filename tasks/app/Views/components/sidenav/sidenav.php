@@ -20,15 +20,15 @@ $usuario =  session("usuario");
             </a>
             <span class="tooltip">Inicio</span>
         </li>
-
-        <li>
-            <a href="usuarios">
-                <i class='bx bx-user'></i>
-                <span class="links_name">Usuarios</span>
-            </a>
-            <span class="tooltip">Administracion de Usuario</span>
-        </li>
-
+        <?php if ($usuario["id_rol"] == 1) : ?>
+            <li>
+                <a href="usuarios">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Usuarios</span>
+                </a>
+                <span class="tooltip">Administracion de Usuario</span>
+            </li>
+        <?php endif; ?>
         <li>
             <a href="tareas">
                 <i class='bx bx-task'></i>
