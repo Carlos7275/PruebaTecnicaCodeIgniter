@@ -5,10 +5,11 @@ Inicio
 <?= $this->section("content"); ?>
 <link rel="stylesheet" href="<?=base_url("assets/css/usuarios.css")?>">
 
-<div class="container shadow gris">
+<div class="container w-100 shadow gris" data-aos="fade-up">
     <h4 class="fw-bold">Panel de usuarios</h4>
+    <hr>
     <div class="btn-group mt-10">
-        <button type="button" id="btnAgregar" name="btnAgregar" class="btn blue"><span style="vertical-align: middle;" class="material-icons">add</span> Usuarios</button>
+        <button type="button" id="btnAgregar" name="btnAgregar" class="btn blue"><span  class="material-icons iconCenter">add</span> Usuarios</button>
     </div>
     <table id="usuarios" name="usuarios" class="table striped bordered highlight responsive-table">
         <thead>
@@ -26,7 +27,7 @@ Inicio
             </tr>
         </thead>
     </table>
-
+<br>
     <!-- Modal -->
     <div class="modal fade " id="registroModal" name="registroModal" static="true" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">

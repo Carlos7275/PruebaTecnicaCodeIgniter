@@ -97,7 +97,9 @@ async function editarDatos() {
     error: (error) => errorResponse(error),
   });
 }
-
+/**
+ * Metodo inicial
+ */
 $(document).ready(async function () {
   crearFormulario();
   await cargarGeneros();
@@ -112,8 +114,10 @@ function actualizarDatos() {
     destroy: true,
     processing: true,
     serverSide: true,
-    ordering: false, // Desactivar el ordenamiento
-
+    ordering: false,
+    language: {
+      search: "Buscar",
+    },
     ajax: function (data, callback, settings) {
       // Parámetros de paginación y búsqueda
       console.log(data);
@@ -155,7 +159,7 @@ function actualizarDatos() {
       {
         data: "foto",
         render: function (data) {
-          return `<img class="img-responsive rounded" src="${urlServidor}/${data}" width="50" height="50" />`;
+          return `<img class="rounded-circle img-responsive mt-2" src="${urlServidor}/${data}" width="50" height="50" />`;
         },
       },
       { data: "fechanacimiento" },
@@ -183,7 +187,7 @@ function actualizarDatos() {
       },
     ],
     lengthChange: false,
-    pageLength: 10, // Número de filas por página
+    pageLength: 20, // Número de filas por página
   });
 }
 

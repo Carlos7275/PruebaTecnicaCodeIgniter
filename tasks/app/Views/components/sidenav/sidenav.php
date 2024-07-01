@@ -22,7 +22,7 @@ $usuario =  session("usuario");
         </li>
         <?php if ($usuario["id_rol"] == 1) : ?>
             <li>
-                <a href="usuarios">
+                <a href="/usuarios">
                     <i class='bx bx-user'></i>
                     <span class="links_name">Usuarios</span>
                 </a>
@@ -30,7 +30,7 @@ $usuario =  session("usuario");
             </li>
         <?php endif; ?>
         <li>
-            <a href="tareas">
+            <a href="/tareas">
                 <i class='bx bx-task'></i>
                 <span class="links_name">Tareas</span>
             </a>

@@ -3,7 +3,7 @@ $usuario =  session("usuario");
 ?>
 
 <link rel="stylesheet" href="<?= base_url("assets/css/dropdown.css") ?>">
-<div class="split-button" data-aos="fade-left">
+<div class="split-button" >
 
 <img loading="true" src="<?= base_url() . $usuario["foto"] ?>" class="img-fluid rounded" width="100px" height="100px">
 <button disabled><?= $usuario["nombres"] . " " . $usuario["apellidos"] ?></button>

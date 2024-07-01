@@ -30,11 +30,6 @@ class Tareas extends Migration
                 'constraint' => 11,
                 'unsigned' => true
             ],
-            'idtarea' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true
-            ],
             'id_usuario' => [
                 'type' => 'INT',
                 'constraint' => 11,
@@ -42,7 +37,8 @@ class Tareas extends Migration
             ],
             'estatus' => [
                 'type' => 'CHAR',
-                'constraint' => 1
+                'constraint' => 1,
+                "default"=>"I"
             ],
             'created_at' => [
                 'type' => 'TIMESTAMP',

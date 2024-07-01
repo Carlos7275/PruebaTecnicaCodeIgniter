@@ -44,7 +44,7 @@ class UsuariosController extends BaseController
      */
     public function usuarios()
     {
-        return view("usuarios/usuarios");
+        return view("/usuarios/usuarios");
     }
     /**
      * Carga la vista de configuracion

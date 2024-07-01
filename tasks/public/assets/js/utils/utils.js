@@ -9,6 +9,8 @@ const url = `${urlServidor}/api`;
 
 document.addEventListener("DOMContentLoaded", function () {
   M.AutoInit();
+  AOS.init();
+
 });
 
 function errorResponse(error) {

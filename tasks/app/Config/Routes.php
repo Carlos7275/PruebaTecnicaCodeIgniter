@@ -9,6 +9,7 @@ $routes->group("", ["filter" => "login"], function ($routes) {
     $routes->get("/", 'Home::inicio');
     $routes->group("", ['filter' => 'rolefilter:1'], function ($routes) {
         $routes->get("usuarios", "UsuariosController::usuarios");
+        $routes->get("tareas", "TareasController::tareas");
     });
     $routes->get('usuario/configuracion', 'UsuariosController::configuracionUsuario');
 });
@@ -32,9 +33,16 @@ $routes->group('api',  function ($routes) {
         $routes->post("usuarios", "UsuariosController::paginacion");
         $routes->put("editarusuario/(:num)", 'UsuariosController::editarUsuario/$1');
         $routes->delete("cambiarestatus/(:num)", "UsuariosController::cambiarEstatus/$1");
+
         //Roles
         $routes->get("roles", "RolesController::obtenerRoles");
         //Prioridades
         $routes->get("obtenerPrioridades", "PrioridadesController:obtenerPrioridades");
+
+        //Tareas
+        $routes->post("tareas", "TareasController::paginar");
+        $routes->post("creartarea", "TareasController::crearTarea");
+        $routes->put("editartarea/(:num)", "TareasController::editarTarea/$1");
+        $routes->put("eliminartarea/(:num)", "TareasController::eliminarTarea/$1");
     });
 });
