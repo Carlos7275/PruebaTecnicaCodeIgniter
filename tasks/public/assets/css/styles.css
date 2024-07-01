@@ -84,3 +84,16 @@ input[type="file"]::file-selector-button:hover {
   color: black;
   border: 1px solid;
 }
+
+.dataTables_wrapper .paginate_button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 10px;
+  background-color: #337ab7;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dataTables_wrapper .paginate_button:hover {
+  background-color: #23527c;
+}

@@ -71,7 +71,7 @@ class BaseModel extends Model
         $busqueda = null,
         $pagina = 1,
         $limiteElementos = 10,
-        $selecciones = null,
+        $selecciones = "*",
         $uniones = null,
         $ordenes = null,
         $filtrosBusqueda = null,
@@ -85,8 +85,9 @@ class BaseModel extends Model
         $builder->select($selecciones);
 
         //leemos el array de las uniones de la tabla
-        foreach ($uniones as $union)
-            $builder->join($union['tabla'], $union['condicion'], $union['tipo'] ?? "inner");
+        if (isset($uniones))
+            foreach ($uniones as $union)
+                $builder->join($union['tabla'], $union['condicion'], $union['tipo'] ?? "inner");
 
         //Se aplicaran los filtros en caso de que existan
         if (!empty($busqueda) && isset($filtrosBusqueda)) {
@@ -142,9 +143,7 @@ class BaseModel extends Model
         $totalRegistrosFiltrados = count($registros);
 
         return [
-            "busqueda", $busqueda,
-            "filtrosBusqueda" => $filtrosBusqueda,
-            "filtrosEspeciales" => $filtrosEspeciales,
+            "busqueda"=> $busqueda,
             "datos" => $registros,
             "totalRegistros" => $totalRegistros,
             "totalRegistrosFiltrados" => $totalRegistrosFiltrados

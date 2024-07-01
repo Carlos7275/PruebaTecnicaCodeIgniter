@@ -19,13 +19,22 @@ $routes->get('/registro', 'UsuariosController::registro', ['filter' => 'public']
 
 $routes->group('api',  function ($routes) {
 
-    //Rutas que necesitan sesiones
-    $routes->group('', ["filter" => "login"], function ($routes) {
-        $routes->get('cerrarsesion', 'UsuariosController::cerrarSesion');
-        $routes->put("editarusuario/(:num)", 'UsuariosController::editarUsuario/$1');
-    });
+    //Rutas que no necesitan sesiones
     $routes->post('iniciarsesion', 'UsuariosController::iniciarSesion');
     $routes->get('generos', 'GenerosController::obtenerGeneros');
     $routes->get('genero/(:num)', 'GenerosController::obtenerGenero/$1');
     $routes->post("crearUsuario", 'UsuariosController::registrarUsuario');
+
+    //Rutas que necesitan sesiones
+    $routes->group('', ["filter" => "login"], function ($routes) {
+        //Usuarios
+        $routes->get('cerrarsesion', 'UsuariosController::cerrarSesion');
+        $routes->post("usuarios", "UsuariosController::paginacion");
+        $routes->put("editarusuario/(:num)", 'UsuariosController::editarUsuario/$1');
+        $routes->delete("cambiarestatus/(:num)", "UsuariosController::cambiarEstatus/$1");
+        //Roles
+        $routes->get("roles", "RolesController::obtenerRoles");
+        //Prioridades
+        $routes->get("obtenerPrioridades", "PrioridadesController:obtenerPrioridades");
+    });
 });

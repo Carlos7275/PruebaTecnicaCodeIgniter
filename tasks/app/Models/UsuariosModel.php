@@ -33,6 +33,7 @@ class UsuariosModel extends BaseModel
      * Iniciar Sesión en el Sistema
      * @param $email Correo
      * @param $password Contraseña
+     * @return array|null; Regresa el array de usuarios o null
      */
     public function iniciarSesion($email, $password)
     {
@@ -42,6 +43,22 @@ class UsuariosModel extends BaseModel
                 unset($usuario["password"]);
                 return $usuario;
             }
+        }
+        return null;
+    }
+    /**
+     * Cambia el estatus de un usuario a activo o inactivo
+     * @param $id id del usuario a cambiar el estatus
+     * @return string|null Activo , inactivo o nulo si no existe
+     */
+    public function cambiarEstatus($id)
+    {
+        $usuario = $this->where('id', $id)->first();
+        if ($usuario) {
+            $estatusNumerico = ($usuario["estatus"] == 1) ? 0 : 1;
+            $estatus = ($usuario["estatus"] == 1) ? "Inactivo" : "Activo";
+            $this->update($id, ['estatus' => $estatusNumerico]);
+            return $estatus;
         }
         return null;
     }

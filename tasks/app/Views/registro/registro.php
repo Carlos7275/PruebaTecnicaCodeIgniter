@@ -29,7 +29,7 @@ Registrarse
 
                         <div class="input-field ">
                             <select id="id_genero" name="id_genero" required>
-                                <option disabled selected>Seleccione un Genero</option>
+                                <option disabled selected value="-1">Seleccione un Genero</option>
                             </select>
                             <label for="id_genero">Genero</label>
                         </div>

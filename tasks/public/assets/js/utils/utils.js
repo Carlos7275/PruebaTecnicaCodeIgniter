@@ -1,9 +1,11 @@
 /**
  * En ese archivo encontraras utilerias , constantes reutilizables
  */
+const debounceDelay = 500;
 
 //Convierte el urlbase para consultar al Backend de CI4
-const url = `${window.location.origin}/api`;
+const urlServidor=window.location.origin.trim();
+const url = `${urlServidor}/api`;
 
 document.addEventListener("DOMContentLoaded", function () {
   M.AutoInit();
