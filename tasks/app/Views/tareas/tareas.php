@@ -19,10 +19,10 @@ Inicio
     </div>
     <div class="input-field">
 
-        <select name="prioridad" id="prioridad">
+        <select name="estatus" id="estatus">
             <option value="-1">Todos</option>
         </select>
-        <label for="prioridad">Estatus de la tarea</label>
+        <label for="estatus">Estatus de la tarea</label>
 
     </div>
     <div class="form-group">

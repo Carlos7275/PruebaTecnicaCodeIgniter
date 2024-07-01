@@ -116,35 +116,35 @@ class TareasController extends BaseController
 
         $filtrosEspeciales = [
             [
-                "campo" => "prioridad.id",
+                "campo" => "prioridades.id",
                 "tipo_dato" => "int",
                 "operador" => "=",
-                'comodin' => "-1",
-                'valor' => $input["idprioridad"]
+                'valorIgnorado' => "-1",
+                'valor' => $input["idprioridad"] ?? "-1"
             ],
             [
                 "campo" => "estatus",
                 "tipo_dato" => "string",
                 "operador" => "=",
-                'comodin' => "-1",
-                'valor' => $input["estatus"]
+                'valorIgnorado' => "-1",
+                'valor' => $input["estatus"] ?? "-1"
             ],
             [
                 "campo" => "tareas.fecha",
                 "tipo_dato" => "date",
                 "operador" => ">=",
-                'comodin' => null,
-                'valor' => $input["fechaInicio"]
+                'valorIgnorado' => null,
+                'valor' => $input["fechaInicio"] ?? null
             ],
             [
                 "campo" => "tareas.fecha",
                 "tipo_dato" => "date",
                 "operador" => "<=",
-                'comodin' => null,
-                'valor' => $input["fechaFinal"]
+                'valorIgnorado' => null,
+                'valor' => $input["fechaFinal"] ?? null
             ]
         ];
-        $resultado = $this->_tareasModel->paginar($input["busqueda"] ?? null, $input["pagina"] ?? 1, $input["limitePagina"] ?? 20, "*", $uniones, null, $filtrosBusqueda, $filtrosEspeciales);
+        $resultado = $this->_tareasModel->paginar($input["busqueda"] ?? null, $input["pagina"] ?? 1, $input["limite"] ?? 20, "*", $uniones, null, $filtrosBusqueda, $filtrosEspeciales);
         return $this->getResponse(UtilMessage::success($resultado));
     }
     /**
