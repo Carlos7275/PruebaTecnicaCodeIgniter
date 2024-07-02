@@ -91,60 +91,60 @@ class TareasController extends BaseController
 
         $filtrosBusqueda = [
             [
-                "campo" => "tareas.id",
+                "columna" => "tareas.id",
                 "tipo_dato" => "int",
                 "operador" => "="
             ],
             [
-                "campo" => "tareas.nombretarea",
+                "columna" => "tareas.nombretarea",
                 "tipo_dato" => "string",
                 "operador" => "string"
             ],
             [
-                "campo" => "tareas.descripcion",
+                "columna" => "tareas.descripcion",
                 "tipo_dato" => "string",
                 "operador" => "="
             ],
             [
-                "campo" => "prioridad.descripcion",
+                "columna" => "prioridades.descripcion",
                 "tipo_dato" => "string",
                 "operador" => "="
             ]
 
 
         ];
-
         $filtrosEspeciales = [
             [
-                "campo" => "prioridades.id",
+                "columna" => "idprioridad",
                 "tipo_dato" => "int",
                 "operador" => "=",
-                'valorIgnorado' => "-1",
-                'valor' => $input["idprioridad"] ?? "-1"
+                'valorIgnorado' => -1,
+                'valor' => $input["idPrioridad"] ?? -1
             ],
             [
-                "campo" => "estatus",
+                "columna" => "estatus",
                 "tipo_dato" => "string",
                 "operador" => "=",
                 'valorIgnorado' => "-1",
                 'valor' => $input["estatus"] ?? "-1"
             ],
             [
-                "campo" => "tareas.fecha",
+                "columna" => "tareas.fechaentrega",
                 "tipo_dato" => "date",
                 "operador" => ">=",
                 'valorIgnorado' => null,
-                'valor' => $input["fechaInicio"] ?? null
+                'valor' => $input["fechaInicial"] ?? null
             ],
             [
-                "campo" => "tareas.fecha",
+                "columna" => "tareas.fechaentrega",
                 "tipo_dato" => "date",
                 "operador" => "<=",
                 'valorIgnorado' => null,
                 'valor' => $input["fechaFinal"] ?? null
             ]
         ];
-        $resultado = $this->_tareasModel->paginar($input["busqueda"] ?? null, $input["pagina"] ?? 1, $input["limite"] ?? 20, "*", $uniones, null, $filtrosBusqueda, $filtrosEspeciales);
+
+        $resultado = $this->_tareasModel->paginar($input["busqueda"] ?? null, $input["pagina"] ?? 1, $input["limite"] ?? 20, "tareas.id,nombretarea,tareas.descripcion,fechaentrega,idprioridad,prioridades.descripcion as prioridad,estatus,created_at,updated_at", $uniones, null, $filtrosBusqueda, $filtrosEspeciales);
         return $this->getResponse(UtilMessage::success($resultado));
     }
     /**

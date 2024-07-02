@@ -13,7 +13,7 @@ class TareasModel extends BaseModel
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ["nombretarea","descripcion","fechaentrega","idprioridad","estatus"];
 
     // Dates
     protected $useTimestamps = false;

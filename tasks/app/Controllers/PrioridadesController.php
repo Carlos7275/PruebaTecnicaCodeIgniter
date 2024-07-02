@@ -3,12 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\GenerosModel;
 use App\Models\PrioridadesModel;
-use App\Models\UsuariosModel;
-use App\Utils\UtilImage;
 use App\Utils\UtilMessage;
-use App\Utils\Utils;
 
 class PrioridadesController extends BaseController
 {
@@ -20,6 +16,6 @@ class PrioridadesController extends BaseController
 
     public function obtenerPrioridades()
     {
-        return $this->getResponse($this->_prioridadesModel->buscarTodos());
+        return $this->getResponse(UtilMessage::success($this->_prioridadesModel->buscarTodos()));
     }
 }

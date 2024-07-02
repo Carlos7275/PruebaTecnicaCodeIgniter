@@ -110,8 +110,8 @@ class BaseModel extends Model
         }
         //Si existen los filtros especiales los aplicamos
         if (isset($filtrosEspeciales)) {
-            foreach ($filtrosEspeciales as $filtroEspecial) {
-                if (isset($filtroEspecial["valor"]) && $filtroEspecial["valor"] != $filtroEspecial["valorIgnorado"]) {
+            foreach ($filtrosEspeciales as $filtro) {
+                if (isset($filtro["valor"]) && $filtro["valor"] != $filtro["valorIgnorado"]) {
                     switch ($filtro["tipo_dato"]) {
                         case 'string':
                             $builder->like($filtro["columna"], $filtro["valor"]);
@@ -124,7 +124,7 @@ class BaseModel extends Model
                             $builder->where($filtro["columna"] . $filtro["operador"], $filtro["valor"]);
                             break;
                         default:
-                            $builder->Where($filtro["columna"] . $filtro["operador"], $filtro["valor"]);
+                            $builder->where($filtro["columna"] . $filtro["operador"], $filtro["valor"]);
                             break;
                     }
                 }

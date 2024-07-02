@@ -45,7 +45,6 @@ $("#frmModal").on("submit", async function (event) {
   event.preventDefault();
 
   if ($(this).valid()) {
-    console.log(estaRegistrando);
     _ = estaRegistrando ? await guardarDatos() : await editarDatos();
   }
 });

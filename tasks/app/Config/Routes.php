@@ -37,12 +37,12 @@ $routes->group('api',  function ($routes) {
         //Roles
         $routes->get("roles", "RolesController::obtenerRoles");
         //Prioridades
-        $routes->get("obtenerPrioridades", "PrioridadesController:obtenerPrioridades");
+        $routes->get("prioridades", "PrioridadesController::obtenerPrioridades");
 
         //Tareas
         $routes->post("tareas", "TareasController::paginar");
         $routes->post("creartarea", "TareasController::crearTarea");
         $routes->put("editartarea/(:num)", "TareasController::editarTarea/$1");
-        $routes->put("eliminartarea/(:num)", "TareasController::eliminarTarea/$1");
+        $routes->delete("eliminartarea/(:num)", "TareasController::eliminarTarea/$1");
     });
 });
