@@ -196,6 +196,10 @@ class UsuariosController extends BaseController
      */
     public function cambiarEstatus($id)
     {
+        $usuario = session("usuario");
+        if ($usuario["id"] == $id)
+            return $this->getResponse(UtilMessage::Observation("No se puede cambiar su propio estatus del sistema"), UtilMessage::getStatus());
+
         $resultado = $this->_usuariosModel->cambiarEstatus($id);
         if ($resultado)
             return $this->getResponse(UtilMessage::success("El usuario con id {$id} se cambio el estatus a {$resultado}"));
