@@ -75,7 +75,7 @@ async function guardarDatos() {
 async function editarDatos() {
   const formData = $("#frmModal").serializeArray();
   const data = formData.reduce((acc, current) => {
-    if (current.name !== "passwordAux") {
+    if (current.name !== "passwordAux" && current.name !== "password") {
       acc[current.name] = current.value;
     }
     return acc;
@@ -304,24 +304,25 @@ function cerrarModal() {
  * @param {*} id  Id del usuario a cambiar el estatus
  */
 function cambiarEstatus(id) {
-  Swal.fire({
-    title: "¿Estás seguro?",
-    text: "¿Quieres cambiar el estatus?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Sí",
-    cancelButtonText: "Cancelar",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        type: "delete",
-        url: url + `/cambiarestatus/${id}`,
-        data: { id: id },
-        success: function (data) {
-          actualizarDatos();
-        },
-        error: (error) => errorResponse(error),
-      });
-    }
-  });
+  if (idUsuario != id)
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¿Quieres cambiar el estatus?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: "delete",
+          url: url + `/cambiarestatus/${id}`,
+          data: { id: id },
+          success: function (data) {
+            actualizarDatos();
+          },
+          error: (error) => errorResponse(error),
+        });
+      }
+    });
 }

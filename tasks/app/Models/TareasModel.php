@@ -13,7 +13,7 @@ class TareasModel extends BaseModel
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["nombretarea","descripcion","fechaentrega","idprioridad","estatus"];
+    protected $allowedFields    = ["nombretarea", "descripcion", "fechaentrega", "id_usuario", "idprioridad", "estatus"];
 
     // Dates
     protected $useTimestamps = false;
@@ -22,20 +22,33 @@ class TareasModel extends BaseModel
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+    /**
+     * Obtiene el total de tareas del usuario especifico
+     * @param int $idusuario
+     * @return array
+     * @created Carlos Fernando Sandoval Lizarraga
+     */
+    public function obtenerTotalActividades($idusuario)
+    {
+        $builder = $this->db->table("tareas");
+        $builder->where("id_usuario", $idusuario);
+        return $builder->countAllResults(false);
+    }
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    /**
+     * Obtiene las tareas retrasadas
+     * @param int $idusuario
+     * @return array
+     * @created Carlos Fernando Sandoval Lizarraga
+     */
+    public function obtenerTareasRetrasadas($idusuario)
+    {
+        $builder = $this->db->table("tareas");
+        $builder->where("id_usuario=", $idusuario);
+        $builder->where("estatus !=", "C");
+        $builder->where("fechaentrega <", date('Y-m-d'));
+
+        $query = $builder->get();
+        return count($query->getResult());
+    }
 }

@@ -28,8 +28,9 @@ Inicio
         </thead>
     </table>
 <br>
-    <!-- Modal -->
-    <div class="modal fade " id="registroModal" name="registroModal" static="true" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+</div>
+
+<div class="modal fade " id="registroModal" name="registroModal" static="true" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,7 +106,6 @@ Inicio
         </div>
     </div>
 
-</div>
 
 <script src="<?= base_url("assets/js/usuarios/usuarios.js") ?>"></script>
 

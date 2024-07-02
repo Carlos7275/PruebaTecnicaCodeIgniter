@@ -9,8 +9,8 @@ $routes->group("", ["filter" => "login"], function ($routes) {
     $routes->get("/", 'Home::inicio');
     $routes->group("", ['filter' => 'rolefilter:1'], function ($routes) {
         $routes->get("usuarios", "UsuariosController::usuarios");
-        $routes->get("tareas", "TareasController::tareas");
     });
+    $routes->get("tareas", "TareasController::tareas");
     $routes->get('usuario/configuracion', 'UsuariosController::configuracionUsuario');
 });
 
@@ -44,5 +44,7 @@ $routes->group('api',  function ($routes) {
         $routes->post("creartarea", "TareasController::crearTarea");
         $routes->put("editartarea/(:num)", "TareasController::editarTarea/$1");
         $routes->delete("eliminartarea/(:num)", "TareasController::eliminarTarea/$1");
+        $routes->get("totalactividades", "TareasController::obtenerTotalTareas");
+        $routes->get("actividadesretrasadas", "TareasController::obtenerTareasRetrasadas");
     });
 });

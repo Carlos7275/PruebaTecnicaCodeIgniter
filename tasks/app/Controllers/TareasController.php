@@ -82,6 +82,7 @@ class TareasController extends BaseController
      */
     public function paginar()
     {
+        $usuario = session("usuario");
         $input = $this->getRequestInput($this->request);
 
         $uniones = [[
@@ -141,6 +142,13 @@ class TareasController extends BaseController
                 "operador" => "<=",
                 'valorIgnorado' => null,
                 'valor' => $input["fechaFinal"] ?? null
+            ],
+            [
+                "columna" => "tareas.id_usuario",
+                "tipo_dato" => "int",
+                "operador" => "=",
+                'valorIgnorado' => null,
+                'valor' => $usuario["id"]
             ]
         ];
 
@@ -158,5 +166,25 @@ class TareasController extends BaseController
         if ($data)
             return $this->getResponse(UtilMessage::success("Se elimino la tarea  con id {$id}"));
         return $this->getResponse(UtilMessage::notFound(), UtilMessage::getStatus());
+    }
+
+    /**
+     * Obtiene total de tareas de acuerdo al usuario logueado
+     */
+    public function obtenerTotalTareas()
+    {
+        $usuario = session("usuario");
+        $resultado = $this->_tareasModel->obtenerTotalActividades($usuario["id"]);
+        return $this->getResponse(UtilMessage::success($resultado));
+    }
+
+    /**
+     * Obtiene las tareas retrasadas de acuerdo al usuario logueado
+     */
+    public function obtenerTareasRetrasadas()
+    {
+        $usuario = session("usuario");
+        $resultado = $this->_tareasModel->obtenerTareasRetrasadas($usuario["id"]);
+        return $this->getResponse(UtilMessage::success($resultado));
     }
 }
